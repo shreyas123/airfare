@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -32,14 +32,62 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :development, :test do
-  # Call 'debugger' anywhere in the code to stop execution and get a debugger console
-  gem 'debugger'
+group :development do
+#   gem 'rails_email_preview'
+  gem 'letter_opener'                       # => open emails in a new browser-window
+  gem "better_errors"                       # => much better and more useful error page
+  # gem "binding_of_caller"                   # => makes better_errors even better (variables ...)
+  gem 'bullet'                              # => alert bad db-queries
+  gem 'quiet_assets'                        # => shortened log from asset-pipeline
+  # gem "thin"
 
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  # gem 'capistrano', '~> 3.2.0'
+  # gem 'capistrano-rails', '~> 1.1'
+#   gem 'capistrano-bundler', '~> 1.1.2'
+#   gem 'rvm1-capistrano3', require: false
+#   gem 'capistrano-sidekiq'
+  gem 'pry-byebug'
+  gem 'pry-stack_explorer'
+  gem 'awesome_print'
+#   gem 'hipchat'
 end
 
+group :development, :test do
+#   gem 'jasmine-rails'
+  gem "rspec"#,                "~> 3.0.0"
+  gem 'rspec-rails'#,          '~> 3.0.0'
+end
+
+# group :assets do
+#   gem 'therubyracer', :platforms => :ruby
+# end
+
+group :test do
+  gem 'rspec-html-matchers'
+  gem 'shoulda-matchers'
+
+  gem 'rspec-legacy_formatters'
+  gem 'rspec_junit_formatter'
+
+  gem 'fuubar'
+  # gem 'parallel_tests'
+  gem 'rspec-rerun'
+  gem 'simplecov'
+  # gem 'simplecov-bamboo', :require => false, :group => "test"
+
+  gem 'database_cleaner',     '~> 1.2.0'
+
+  gem 'timecop'
+  gem 'test_after_commit'
+  gem 'poltergeist', git: 'https://github.com/teampoltergeist/poltergeist.git', ref: '2d23867279e1ccd7e064a51bb750ea75a71ecd0e'
+  gem "capybara"
+  gem 'capybara-screenshot'
+  gem 'selenium-webdriver'
+  gem "site_prism"
+
+#   gem 'guard'
+#   gem 'guard-zeus'
+#   gem 'guard-rspec'
+#   gem 'guard-bundler'
+#   gem 'guard-migrate'
+end
